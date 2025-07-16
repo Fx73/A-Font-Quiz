@@ -9,7 +9,7 @@ export class Lobby {
     createdAt: Date = new Date()
     state: GameState = GameState.InLobby;
     questionList: string[] = []
-    secondsRemaining: number = 0
+    questionStartAt?: Timestamp;
     systemMessage?: string;
 
     wordList: string[] = []
@@ -23,3 +23,4 @@ export enum GameState {
     GameAnswer,
     InVictoryRoom
 }
+
