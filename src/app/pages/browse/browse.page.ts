@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { InfiniteScrollCustomEvent, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonInfiniteScroll, IonInfiniteScrollContent, IonInput, IonItem, IonLabel, IonMenu, IonSearchbar, IonSelect, IonSelectOption, IonSplitPane, IonTextarea } from '@ionic/angular/standalone';
 
+import { AppComponent } from 'src/app/app.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from "src/app/shared/component/header/header.component";
 import { ItemFirestoreService } from 'src/app/services/firestore/item.firestore.service';
-import { Router } from '@angular/router';
+import { StorageService } from './../../services/firestore/storage.service';
 import { TriviaItemDTO } from 'src/app/shared/DTO/trivia-item.dto';
 import { UserConfigService } from 'src/app/services/userconfig.service';
 import { UserFirestoreService } from './../../services/firestore/user.firestore.service';
@@ -34,7 +35,7 @@ export class BrowsePage implements OnInit {
 
   userId: string | undefined
 
-  constructor(private itemFirestoreService: ItemFirestoreService, private userFirestoreService: UserFirestoreService, private userConfigService: UserConfigService) {
+  constructor(private itemFirestoreService: ItemFirestoreService, private userFirestoreService: UserFirestoreService, private storageService: StorageService, private userConfigService: UserConfigService) {
     this.userId = userFirestoreService.getUserData()?.id
   }
 
@@ -150,6 +151,39 @@ export class BrowsePage implements OnInit {
     this.updateItems(this.items.at(-1)?.id ?? null)
   }
 
+  selectFontFile() {
+    if (!this.selectedItem) return
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.woff,.woff2,.ttf,.otf';
+    input.onchange = async () => {
+      const file = input.files?.[0];
+      if (file) {
+        try {
+          const success = await this.storageService.uploadFont(file);
+          if (success) {
+            this.selectedItem!.question = file.name
+            this.selectedItem!.isLink = false;
+            AppComponent.presentOkToast('Font uploaded successfully!');
+          }
+        } catch (err) {
+          AppComponent.presentErrorToast('Upload failed');
+        }
+      }
+    };
+
+    input.click();
+  }
+
+  async deleteUploadedFont() {
+    if (!this.selectedItem) return
+    const success = await this.storageService.deleteFont(this.selectedItem.question);
+    if (success) {
+      this.selectedItem.question = '';
+      this.selectedItem.isLink = true;
+      AppComponent.presentWarningToast('Font reference removed.');
+    }
+  }
 
 
 }

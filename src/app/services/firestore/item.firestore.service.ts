@@ -185,8 +185,16 @@ export class ItemFirestoreService {
             throw error;
         }
     }
+    async isFontUsed(fontUrl: string): Promise<boolean> {
+        const querySnapshot = await getDocs(
+            query(
+                collection(this.db, this.TRIVIA_COLLECTION),
+                where('question', '==', fontUrl)
+            )
+        );
 
-
+        return !querySnapshot.empty;
+    }
     //#endregion
 
     //#region Category

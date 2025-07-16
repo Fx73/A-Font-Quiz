@@ -1,4 +1,4 @@
-<app-header title="MultiTriviaTemplate"></app-header>
+<app-header title="A Font Quiz"></app-header>
 <ion-content>
 	<ion-grid>
 		<ion-row>
@@ -6,7 +6,7 @@
 				<ion-card class="base-card">
 					<ion-card-header>
 						<ion-card-title class="home-fontsize">
-							Welcome on MultiPlayer Trivia Template
+							Welcome on a Font Quiz !
 						</ion-card-title>
 					</ion-card-header>
 					<ion-card-content>
@@ -37,7 +37,7 @@
 				<ion-card class="base-card">
 					<ion-card-header>
 						<ion-card-title>{{ userData?.name ?? "Anonymous user" }} </ion-card-title>
-						<ion-card-subtitle *ngIf="!userData"> Log in to upload your questions</ion-card-subtitle>
+						<ion-card-subtitle *ngIf="!userData"> Log in to upload your font questions</ion-card-subtitle>
 					</ion-card-header>
 					<ion-card-content>
 						<ion-button [routerLink]="['/browse']" [disabled]="!userData" expand="block"

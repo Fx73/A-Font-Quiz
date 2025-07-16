@@ -11,7 +11,7 @@
           <ion-card-subtitle *ngIf="selectedItem.owner"> {{ ownerNameList.get(selectedItem.owner) ?? 'Unknown' }}
           </ion-card-subtitle>
           <div [ngStyle]="{ 'font-family': customFontName, 'font-size': '48px' }">
-            Hello I am a nice font !
+            {{ selectedItem.answer }}
           </div>
         </ion-card-header>
 
@@ -52,9 +52,17 @@
             <ion-input [(ngModel)]="selectedItem.subcategory" placeholder="Enter new subcategory"></ion-input>
           </ion-item>
 
-          <ion-item [disabled]="selectedItem.owner !== undefined && selectedItem.owner !== userId">
-            <ion-label position="stacked">Question</ion-label>
-            <ion-textarea [(ngModel)]="selectedItem.question" autoGrow="true"></ion-textarea>
+          <ion-item [disabled]="!selectedItem.isLink || (selectedItem.owner && selectedItem.owner !== userId)">
+            <ion-input label="Font URL" [(ngModel)]="selectedItem.question" type="url"
+              placeholder="https://..."></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-button expand="block" color="primary" *ngIf="selectedItem.isLink" (click)="selectFontFile()">
+              Upload font file
+            </ion-button>
+            <ion-button expand="block" color="danger" *ngIf="!selectedItem.isLink" (click)="deleteUploadedFont()">
+              Delete uploaded font
+            </ion-button>
           </ion-item>
 
           <ion-item [disabled]="selectedItem.owner !== undefined && selectedItem.owner !== userId">

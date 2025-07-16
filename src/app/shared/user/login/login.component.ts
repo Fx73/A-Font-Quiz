@@ -1,11 +1,10 @@
-import { CommonModule, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonItem, IonLabel, IonTab, IonTabBar, IonTabButton, IonTabs, IonTitle } from "@ionic/angular/standalone";
+import { NgClass, NgIf } from '@angular/common';
 import { keyOutline, logInOutline, logoGoogle, personAddOutline, refreshCircleOutline } from 'ionicons/icons';
 
-import { IonicModule } from '@ionic/angular';
 import { LoginFireauthService } from 'src/app/services/firestore/login.fireauth.service';
-import { RouterModule } from '@angular/router';
 import { addIcons } from 'ionicons';
 
 @Component({
@@ -13,15 +12,15 @@ import { addIcons } from 'ionicons';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgIf],
+  imports: [IonButton, IonItem, FormsModule, IonCardSubtitle, ReactiveFormsModule, IonTabButton, IonTabBar, IonCardHeader, IonCardTitle, IonCardContent, IonTitle, IonCard, IonTab, IonIcon, IonTabs, NgIf, NgClass, IonLabel],
 })
 export class LoginComponent {
   @Input()
   isSmall = false;
 
-  registerForm: FormGroup;
-  loginForm: FormGroup;
-  passwordRecoveryForm: FormGroup;
+  registerForm: FormGroup = new FormGroup({});
+  loginForm: FormGroup = new FormGroup({});
+  passwordRecoveryForm: FormGroup = new FormGroup({});
 
 
   constructor(private fb: FormBuilder, private loginService: LoginFireauthService) {
@@ -59,7 +58,7 @@ export class LoginComponent {
   }
 
   passwordRecovery(email: string): void {
-    this.passwordRecovery(email);
+    this.loginService.passwordRecovery(email);
   }
 
 
