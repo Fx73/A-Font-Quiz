@@ -1,6 +1,8 @@
 # Multiplayer Trive Template
 
 ![IM2AG](https://img.shields.io/badge/IM2AG-Seal%20of%20Quality-blue)
+[![GitHub last commit](https://img.shields.io/github/last-commit/fx73/A-Font-Quiz)](https://github.com/Fx73/A-Font-Quiz)
+[![Website](https://img.shields.io/website?down_message=down&up_message=afontquiz.web.app&url=https%3A%2F%2Fafontquiz.web.app)](http://afontquiz.web.app)
 
 Welcome to **Multiplayer Trive Template**, a web application that challenges users with fast-paced quiz questions.
 
