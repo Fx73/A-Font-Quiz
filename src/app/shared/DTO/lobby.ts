@@ -1,3 +1,5 @@
+import { Timestamp } from 'firebase/firestore';
+
 export class Lobby {
     host: string | null = null
     category: string | null = null
