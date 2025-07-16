@@ -5,6 +5,7 @@ export class TriviaItemDTO {
     question: string;
     answer: string;
     owner: string | undefined;
+    isLink: boolean = true
 
     constructor(question?: string, answer?: string) {
         this.question = question ?? ""

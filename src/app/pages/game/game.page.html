@@ -37,7 +37,9 @@
 					<ion-chip *ngIf="gameInstance.lobby.isTimed" class="chip-countdown">
 						⏱️ {{ gameInstance.lobby.secondsRemaining }}
 					</ion-chip>
-					<ion-card-title>{{ trivia.question }}</ion-card-title>
+					<ion-card-title [ngStyle]="{ 'font-family': customFontName}">
+						{{customFontWord}}
+					</ion-card-title>
 				</ion-card-header>
 
 				<ion-card-content *ngIf="gameInstance.lobby.state === GameState.GameQuestion">

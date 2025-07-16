@@ -1,0 +1,545 @@
+Netflix
+Apple
+Target
+Google
+Amazon
+Spotify
+New YorkTech
+Trader Joe's
+Zoom Video Communications
+The Walt Disney Company
+ROBLOX
+In-N-Out Burger
+Nintendo
+Headspace
+Lego Group
+Delta Air Lines
+Microsoft
+Instagram
+Southwest Airlines
+American Eagle Outfitters
+Glossier
+Rockstar Games
+CHANEL
+New YorkFashion and Beauty
+LinkedIn
+Uniqlo
+PlayStation
+Tesla
+Starbucks
+NVIDIA
+Salesforce / Slack
+Honda
+Automotive and Transportation
+Automotive and Transportation
+Red Bull
+Colgate Palmolive
+Bath & Body Works
+Mercedes-Benz USA
+Automotive and Transportation
+Hershey Company
+Dunkin'
+Porsche
+AtlantaAutomotive and Transportation
+Chipotle
+BMW Group
+MunichAutomotive and Transportation
+Pinterest
+Logitech
+Ritz-Carlton
+Shopify
+OttawaTech
+Crocs
+Gucci
+FlorenceFashion and Beauty
+Tiffany & Co
+The Coca-Cola Company
+Rooster Teeth
+National Geographic
+Adidas
+SEPHORA
+American Express
+HerzogenaurachFashion and Beauty
+Versace
+AustinFashion and Beauty
+Adobe
+Block
+Whole Foods Market
+Unilever
+Consumer Goods
+Cisco
+JPMorgan Chase & Co
+Bungie
+MAC Cosmetics
+YouTube
+ParisFashion and Beauty
+Riot Games
+Airbnb
+Marriott
+Ubisoft
+Saint-MandeMedia and Entertainment
+ZoomInfo
+Toyota
+Automotive and Transportation
+Tommy Hilfiger
+AmsterdamFashion and Beauty
+Hilton
+McDonald's
+The Home Depot
+Baskin Robbins
+Mastercard
+Johnson & Johnson
+Twitter
+Procter & Gamble
+7-Eleven
+Coinbase
+FedEx
+Nordstrom
+Philips
+Foot Locker
+Google
+Facebook
+Amazon
+Walmart
+Yahoo
+Target
+YouTube
+Home Depot
+Craigslist
+USPS
+Walgreens
+Apple
+Fox News
+Costco
+Best Buy
+ESPN
+Instagram
+Ebay
+Bank of America
+FedEx
+Chase
+Speed Test
+Twitter
+Lowes
+Netflix
+OpenAI
+Dollar Tree
+Wells Fargo
+Zillow
+Indeed
+Kohls
+Nike
+Reddit
+McDonalds
+Taco Bell
+AutoZone
+Thesaurus
+Powerball
+Xfinity
+Dominos
+Capital One
+Southwest
+Toyota
+Starbucks
+Pizza Hut
+Verizon
+Macys
+PayPal
+Publix
+IKEA
+CarGurus
+PetSmart
+Microsoft
+Wendys
+Etsy
+AMC Theatres
+Hulu
+Roblox
+LinkedIn
+Michaels
+Office
+Panda Express
+Hotels
+Little Caesars
+US Bank
+Apartments
+Delta
+Dicks Sporting Goods
+Airbnb
+Menards
+Kroger
+JCPenney
+Spotify
+Bed Bath and Beyond
+Panera Bread
+Hilton
+Wikipedia
+Dollar General
+Enterprise
+Subway
+Pinterest
+Fidelity
+Hobby Lobby
+NY Times
+Ford
+Nordstrom Rack
+Harbor Freight
+Safeway
+Big Lots
+Spectrum
+Chevrolet
+Joann
+United
+Bath and Body Works
+Credit Karma
+GameStop
+Olive Garden
+Party City
+Citi
+Marriott
+PlayStation
+Allegiant Air
+Bass Pro
+Family Dollar
+Sephora
+Western Union
+Burlington
+Expedia
+Nordstrom
+American Express
+Office Depot
+The Cheesecake Factory
+T-Mobile
+Giphy
+Disney Plus
+Realtor
+DoorDash
+Papa Johns
+Canva
+Samsung
+Bing
+AutoTrader
+Tesla
+Dunkin Donuts
+Kaiser Permanente
+Alaska Air
+Discord
+Metro by T-Mobile
+Adidas
+Honda
+Premier League
+Louis Vuitton
+State Farm
+Dairy Queen
+Nintendo
+Twitch.tv
+The UPS Store
+Arbys
+Chick-fil-A
+Planet Fitness
+Rite Aid
+NASCAR
+JetBlue
+DuckDuckGo
+Dictionary
+Outback
+Truist
+Advance Auto Parts
+Discover
+Meijer
+Buffalo Wild Wings
+Staples
+HomeGoods
+Popeyes
+Barnes and Noble
+NY Post
+Ace Hardware
+Sonic Drive-In
+U-Haul
+CarMax
+Red Lobster
+Micro Center
+Jimmy Johns
+Intuit
+LEGO
+Six Flags
+Quest Diagnostics
+Navy Federal
+Ameritrade
+Krispy Kreme
+College Board
+Dallas Cowboys
+WhatsApp
+PGA Tour
+Goodwill
+Wayfair
+Spectrum
+AccuWeather
+Victorias Secret
+Tractor Supply
+GEICO
+Chiefs
+Kahoot
+Spirit
+TD Ameritrade
+OReilly Auto
+Academy
+Applebees
+Adobe
+Simon
+Gucci
+Whole Foods Market
+Cars
+Petco
+MapQuest
+BMW USA
+Ticketmaster
+Foot Locker
+Hyundai USA
+Pandora
+Reg Movies
+OfferUp
+Discount Tire
+Marshalls
+Subaru
+Boost Mobile
+Five Below
+Vikings
+Amtrak
+Minecraft
+Firehouse Subs
+Cabelas
+Priceline
+Converse
+Forever 21
+USAA
+HR Block
+Guitar Center
+MGM Resorts
+Disney
+Clever
+Aldi
+Cinemark
+Fly Frontier
+White Pages
+Fred Meyer
+Spirit Halloween
+MiLB
+Red Robin
+Jeep
+MB USA
+Giants
+Ashley Furniture
+Wingstop
+Chewy
+Progressive
+Bible Gateway
+LL Bean
+Great Clips
+Audi USA
+Schwab
+49ers
+Regions
+Fashion Nova
+New Balance
+Massage Envy
+Carvana
+Pottery Barn
+Kayak
+Grammarly
+Formula 1
+AliExpress
+ShopRite
+LabCorp
+Hyatt
+Lululemon
+People
+Credit One Bank
+Steelers
+Dodge
+TikTok
+Five Guys
+Cracker Barrel
+Straight Talk
+Dennys
+Lexus
+Urban Dictionary
+Xbox
+Premium Outlets
+Chilis
+Sally Beauty
+Jack in the Box
+SiriusXM
+Dillards
+TV Guide
+FIFA
+Floor and Decor
+Caesars
+Cricket Wireless
+Steam Powered
+Express
+Epic Games
+Roku
+Five Thirty Eight
+Porsche
+Pep Boys
+Budget
+Huntington
+Experian
+Care Credit
+Harris Teeter
+At Home
+Shein
+Sherwin-Williams
+Dell
+Anthropologie
+Vanguard
+Redbox
+Longhorn Steakhouse
+Tumblr
+Chanel
+Michael Kors
+Hertz
+Great Wolf
+Grubhub
+World Star Hip Hop
+In-N-Out
+Carnival
+MLS Soccer
+Sams Club
+Chipotle
+Pokemon
+NAPA Online
+Citizens Bank
+Fandom
+Skechers
+Royal Caribbean
+Food Lion
+Miami Dolphins
+Packers
+Lands End
+Albertsons
+iCloud
+HuffPost
+Under Armour
+US Open
+Snapchat
+Choice Hotels
+SoundCloud
+LA Fitness
+Universal Orlando
+DirecTV
+SeaWorld
+Quizlet
+Bengals
+Hollister Co
+Crate and Barrel
+Levi
+Khan Academy
+Wyndham Hotels
+Greyhound
+Ancestry
+Instacart
+Comenity
+Dropbox
+Abercrombie
+Birkenstock
+League of Legends
+Horoscope
+The Guardian
+CenturyLink
+Prodigy Game
+Belk
+Church of Jesus Christ
+GoDaddy
+Duke Energy
+Ulta
+Urban Outfitters
+MSNBC
+IMDb
+Sportsmans
+Desmos
+ETrade
+GoodRx
+Milwaukee Tool
+CBS Sports
+PF Changs
+Bloomingdales
+Redfin
+Space
+Total Wine
+Mazda USA
+Ralph Lauren
+Quizizz
+Neiman Marcus
+Flight Aware
+NVIDIA
+Cedar Point
+Crocs
+NCAA
+Polaris
+Rock Auto
+USA Today
+Sky Zone
+Uber Eats
+British Airways
+Uber
+Buy Buy Baby
+Dyson
+Hot Topic
+Gun Broker
+1800 Flowers
+Ally
+16 Personalities
+Tubi TV
+Del Taco
+The North Face
+NCSECU
+Allstate
+Shop Disney
+Chess
+Tinder
+Land Rover USA
+Groupon
+Boot Barn
+Columbia
+NBC News
+Canon
+Loft
+Dave and Busters
+Synchrony
+DeviantArt
+Best Western
+Raiders
+Busch Gardens
+IHeart
+24 Hour Fitness
+Avis
+Ray-Ban
+Booking
+Hy-Vee
+Chuck E Cheese
+TGI Fridays
+Wunderground
+Shoe Carnival
+Philadelphia Eagles
+TripAdvisor
+Infiniti USA
+LJSilvers
+Travelocity
+Washington Post
+Torrid
+Jiffy Lube
+Cold Stone Creamery
+Tropical Smoothie Cafe
+Ram Trucks
+Rolex
+Amazon.jobs
+Lamborghini
+First Energy Corp
+Dr Martens
+Ring
+Vitamin Shoppe
+Fortnite
+PBS Kids
+Stanley 1913

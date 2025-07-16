@@ -14,7 +14,9 @@ import { LobbyService } from 'src/app/services/firestore/lobby.service';
 import { PlayersCardComponent } from 'src/app/shared/component/players-card/players-card.component';
 import { Subscription } from 'rxjs';
 import { SystemMessageProvider } from 'src/app/shared/system-message-provider';
+import { TriviaItemDTO } from 'src/app/shared/DTO/trivia-item.dto';
 import { UserConfigService } from 'src/app/services/userconfig.service';
+import { WordBaseService } from './../../services/wordbase.service';
 import { addIcons } from 'ionicons';
 
 @Component({
@@ -40,7 +42,7 @@ export class LobbyPage implements OnInit, OnDestroy {
 
   private stateSub!: Subscription;
 
-  constructor(private route: ActivatedRoute, private router: Router, private userConfigService: UserConfigService, private itemService: ItemFirestoreService, private lobbyService: LobbyService) {
+  constructor(private route: ActivatedRoute, private router: Router, private userConfigService: UserConfigService, private itemService: ItemFirestoreService, private lobbyService: LobbyService, private wordBaseService: WordBaseService) {
     addIcons({ clipboard, helpCircleOutline })
     lobbyService.cleanLobbyDB()
 
@@ -133,12 +135,26 @@ export class LobbyPage implements OnInit, OnDestroy {
     await this.lobbyService.updateLobby(this.lobbyCode, 'questionList', questions)
     await this.lobbyService.sendSystemMessage(this.lobbyCode, SystemMessageProvider.get('gameStart'));
 
+    const wordList: string[] = [];
+
+    for (const qId of questions) {
+      const question = await this.itemService.getItem(qId);
+      const word = question ? await this.wordBaseService.pickWordForQuestion(question) : 'ERROR';
+      wordList.push(word);
+    }
+
+    await this.lobbyService.updateLobby(this.lobbyCode, 'wordList', wordList);
+
+
     // ⏳ Delay before transitioning
     setTimeout(async () => {
       await this.lobbyService.updateLobby(this.lobbyCode, 'state', GameState.GameQuestion);
     }, 2000);
   }
 
+  private getWordForQuestion(question: TriviaItemDTO) {
+
+  }
 
   copyToClipboard() {
     navigator.clipboard.writeText("https://" + window.location.hostname + this.router.url);

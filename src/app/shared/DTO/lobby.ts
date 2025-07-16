@@ -12,6 +12,7 @@ export class Lobby {
     secondsRemaining: number = 0
     systemMessage?: string;
 
+    wordList: string[] = []
     constructor() {
     }
 }

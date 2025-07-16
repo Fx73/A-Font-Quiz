@@ -1,3 +1,4 @@
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/banana-brick" type="text/css" />
 <app-header title="Browse"></app-header>
 <ion-content fullscreen="false">
   <ion-split-pane when="xs" contentId="item-list">
@@ -7,9 +8,11 @@
       </ion-button>
       <ion-card *ngIf="selectedItem" class="levelCard">
         <ion-card-header>
-          <ion-card-title>{{ selectedItem.id || 'New Trivia Item' }}</ion-card-title>
           <ion-card-subtitle *ngIf="selectedItem.owner"> {{ ownerNameList.get(selectedItem.owner) ?? 'Unknown' }}
           </ion-card-subtitle>
+          <div [ngStyle]="{ 'font-family': customFontName, 'font-size': '48px' }">
+            Hello I am a nice font !
+          </div>
         </ion-card-header>
 
         <ion-card-content>

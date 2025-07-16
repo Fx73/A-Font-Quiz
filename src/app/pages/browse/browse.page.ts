@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { TriviaItemDTO } from 'src/app/shared/DTO/trivia-item.dto';
 import { UserConfigService } from 'src/app/services/userconfig.service';
 import { UserFirestoreService } from './../../services/firestore/user.firestore.service';
+import { loadFontFromUrl } from 'src/app/shared/util';
 
 @Component({
   selector: 'app-browse',
@@ -18,6 +19,8 @@ import { UserFirestoreService } from './../../services/firestore/user.firestore.
   imports: [IonLabel, IonItem, IonTextarea, IonButton, IonSplitPane, IonCardSubtitle, IonMenu, IonCardContent, IonCardTitle, IonInfiniteScrollContent, IonInfiniteScroll, IonSearchbar, IonSelect, IonSelectOption, IonCard, IonCardHeader, IonInput, IonContent, CommonModule, FormsModule, HeaderComponent]
 })
 export class BrowsePage implements OnInit {
+  customFontName = 'CUSTOM_FONT_TESTER';
+
   searchQuery: string = '';
   items: TriviaItemDTO[] = [];
 
@@ -122,7 +125,7 @@ export class BrowsePage implements OnInit {
     this.selectedItem = null;
   }
 
-  select(item: TriviaItemDTO) {
+  async select(item: TriviaItemDTO) {
     if (this.selectedItem?.id === item.id) {
       this.selectedItem = null;
       return;
@@ -133,6 +136,8 @@ export class BrowsePage implements OnInit {
       this.itemFirestoreService.getSubcategories(this.selectedCategoryChoice).then(value => this.subcategoryList = value)
       this.selectedSubcategoryChoice = item.subcategory ?? null
     }
+    if (item.isLink)
+      this.customFontName = await loadFontFromUrl(this.selectedItem!.question)
   }
 
 
@@ -144,6 +149,7 @@ export class BrowsePage implements OnInit {
   onIonInfinite(event: InfiniteScrollCustomEvent) {
     this.updateItems(this.items.at(-1)?.id ?? null)
   }
+
 
 
 }

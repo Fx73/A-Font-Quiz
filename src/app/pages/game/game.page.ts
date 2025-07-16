@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 import { TriviaItemDTO } from 'src/app/shared/DTO/trivia-item.dto';
 import { UserConfigService } from "src/app/services/userconfig.service";
 import { distance } from 'fastest-levenshtein';
+import { loadFontFromUrl } from 'src/app/shared/util';
 
 @Component({
   selector: 'app-game',
@@ -25,6 +26,9 @@ import { distance } from 'fastest-levenshtein';
 })
 export class GamePage implements OnInit, OnDestroy, AfterViewInit {
   GameState = GameState
+  customFontName = 'CUSTOM_FONT_TESTER';
+  customFontWord = "I AM A WORD WITH FONT"
+
   get gameInstance(): GameInstance { return AppComponent.gameInstance }
   set gameInstance(value: GameInstance) { AppComponent.gameInstance = value }
 
@@ -67,6 +71,10 @@ export class GamePage implements OnInit, OnDestroy, AfterViewInit {
 
     const questionId = instance.lobby!.questionList[remaining - 1];
     this.trivia = await this.itemFirestoreService.getItem(questionId);
+    this.customFontWord = this.gameInstance.lobby.wordList[remaining - 1]
+
+    if (this.trivia && this.trivia.isLink)
+      this.customFontName = await loadFontFromUrl(this.trivia.question)
   }
 
   onStateChange(state: GameState): void {
