@@ -1,0 +1,31 @@
+name: Deploy to Firebase
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  firebase-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+      
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Install Ionic CLI
+      run: npm install -g @ionic/cli
+
+    - name: Build Ionic app
+      run: npm run ionic-build-prod
+      
+    - uses: FirebaseExtended/action-hosting-deploy@v0
+      with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: live
+          projectId: afontquiz
+          entryPoint: website
