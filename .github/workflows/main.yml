@@ -12,9 +12,16 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
+    - name: 'npm install'
+      uses: Npm@1
+      with:
+        command: install
+    - name: 'ionic build --prod'
+      uses: Npm@1
+      with:
+        command: custom
+        customCommand: 'run ionic-build-prod'
       
-    - run: npm install
-    - run: ng build  
     - uses: FirebaseExtended/action-hosting-deploy@v0
       with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
