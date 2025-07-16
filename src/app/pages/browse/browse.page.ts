@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InfiniteScrollCustomEvent, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonInfiniteScroll, IonInfiniteScrollContent, IonInput, IonItem, IonLabel, IonMenu, IonSearchbar, IonSelect, IonSelectOption, IonSplitPane, IonTextarea } from '@ionic/angular/standalone';
+import { InfiniteScrollCustomEvent, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonInfiniteScroll, IonInfiniteScrollContent, IonInput, IonItem, IonLabel, IonList, IonMenu, IonSearchbar, IonSelect, IonSelectOption, IonSplitPane, IonTextarea, IonToggle } from '@ionic/angular/standalone';
+import { loadFontFromFirebase, loadFontFromUrl } from 'src/app/shared/util';
 
 import { AppComponent } from 'src/app/app.component';
 import { CommonModule } from '@angular/common';
@@ -10,14 +11,13 @@ import { StorageService } from './../../services/firestore/storage.service';
 import { TriviaItemDTO } from 'src/app/shared/DTO/trivia-item.dto';
 import { UserConfigService } from 'src/app/services/userconfig.service';
 import { UserFirestoreService } from './../../services/firestore/user.firestore.service';
-import { loadFontFromUrl } from 'src/app/shared/util';
 
 @Component({
   selector: 'app-browse',
   templateUrl: './browse.page.html',
   styleUrls: ['./browse.page.scss'],
   standalone: true,
-  imports: [IonLabel, IonItem, IonTextarea, IonButton, IonSplitPane, IonCardSubtitle, IonMenu, IonCardContent, IonCardTitle, IonInfiniteScrollContent, IonInfiniteScroll, IonSearchbar, IonSelect, IonSelectOption, IonCard, IonCardHeader, IonInput, IonContent, CommonModule, FormsModule, HeaderComponent]
+  imports: [IonList, IonToggle, IonLabel, IonItem, IonTextarea, IonButton, IonSplitPane, IonCardSubtitle, IonMenu, IonCardContent, IonCardTitle, IonInfiniteScrollContent, IonInfiniteScroll, IonSearchbar, IonSelect, IonSelectOption, IonCard, IonCardHeader, IonInput, IonContent, CommonModule, FormsModule, HeaderComponent]
 })
 export class BrowsePage implements OnInit {
   customFontName = 'CUSTOM_FONT_TESTER';
@@ -97,6 +97,18 @@ export class BrowsePage implements OnInit {
     }
   }
 
+  onLinkToggle(checked: boolean) {
+    if (!this.selectedItem) return
+    if (this.selectedItem.isLink) {
+      this.selectedItem.question = ''
+      this.selectedItem.isLink = false
+    } else {
+      if (this.selectedItem.question)
+        return
+      this.selectedItem.isLink = true
+    }
+  }
+
   onAddNewItem() {
     this.selectedItem = new TriviaItemDTO();
   }
@@ -139,6 +151,8 @@ export class BrowsePage implements OnInit {
     }
     if (item.isLink)
       this.customFontName = await loadFontFromUrl(this.selectedItem!.question)
+    else
+      this.customFontName = await loadFontFromFirebase(this.selectedItem!.question)
   }
 
 

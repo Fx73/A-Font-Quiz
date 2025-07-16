@@ -34,7 +34,7 @@ export class ItemFirestoreService {
             const itemRef = doc(this.db, this.TRIVIA_COLLECTION, dto.id).withConverter(this.firestoreConverterTriviaItem);
             await setDoc(itemRef, dto);
 
-            AppComponent.presentOkToast("Music successfully uploaded!")
+            AppComponent.presentOkToast("Trivia successfully uploaded!")
 
             if (dto.category) {
                 this.addCategory(dto.category);

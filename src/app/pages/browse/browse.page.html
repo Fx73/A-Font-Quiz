@@ -51,20 +51,28 @@
             [disabled]="selectedItem.owner && selectedItem.owner !== userId">
             <ion-input [(ngModel)]="selectedItem.subcategory" placeholder="Enter new subcategory"></ion-input>
           </ion-item>
-
-          <ion-item [disabled]="!selectedItem.isLink || (selectedItem.owner && selectedItem.owner !== userId)">
-            <ion-input label="Font URL" [(ngModel)]="selectedItem.question" type="url"
-              placeholder="https://..."></ion-input>
+          <ion-item [disabled]="selectedItem.owner && selectedItem.owner !== userId">
+            <ion-toggle [checked]="selectedItem.isLink" (ionChange)="onLinkToggle($event.target.checked)"
+              [disabled]="!selectedItem.isLink && selectedItem.question"> Upload
+              File / Link</ion-toggle>
           </ion-item>
           <ion-item>
-            <ion-button expand="block" color="primary" *ngIf="selectedItem.isLink" (click)="selectFontFile()">
-              Upload font file
-            </ion-button>
-            <ion-button expand="block" color="danger" *ngIf="!selectedItem.isLink" (click)="deleteUploadedFont()">
-              Delete uploaded font
-            </ion-button>
-          </ion-item>
 
+
+            <ion-item *ngIf="selectedItem.isLink" [disabled]="(selectedItem.owner && selectedItem.owner !== userId)">
+              <ion-input label="Font URL" [(ngModel)]="selectedItem.question" type="url"
+                placeholder="https://..."></ion-input>
+            </ion-item>
+            <ion-item *ngIf="!selectedItem.isLink">
+              <ion-button expand="block" color="primary" *ngIf="!selectedItem.question" (click)="selectFontFile()">
+                Upload font file
+              </ion-button>
+              <ion-button expand="block" color="danger" *ngIf="selectedItem.question" (click)="deleteUploadedFont()">
+                Delete font : {{selectedItem.question}}
+              </ion-button>
+            </ion-item>
+
+          </ion-item>
           <ion-item [disabled]="selectedItem.owner !== undefined && selectedItem.owner !== userId">
             <ion-label position="stacked">Answer</ion-label>
             <ion-textarea [(ngModel)]="selectedItem.answer" autoGrow="true"></ion-textarea>

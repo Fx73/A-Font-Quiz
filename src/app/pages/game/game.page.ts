@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonChip, IonCol, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuButton, IonRow, IonSplitPane, IonText, IonTitle, IonToolbar, ToastController } from '@ionic/angular/standalone';
+import { loadFontFromFirebase, loadFontFromUrl } from 'src/app/shared/util';
 
 import { AppComponent } from 'src/app/app.component';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +16,6 @@ import { Subscription } from 'rxjs';
 import { TriviaItemDTO } from 'src/app/shared/DTO/trivia-item.dto';
 import { UserConfigService } from "src/app/services/userconfig.service";
 import { distance } from 'fastest-levenshtein';
-import { loadFontFromUrl } from 'src/app/shared/util';
 
 @Component({
   selector: 'app-game',
@@ -72,8 +72,13 @@ export class GamePage implements OnInit, OnDestroy, AfterViewInit {
     this.trivia = await this.itemFirestoreService.getItem(questionId);
     this.customFontWord = this.gameInstance.lobby.wordList[remaining - 1]
 
-    if (this.trivia && this.trivia.isLink)
-      this.customFontName = await loadFontFromUrl(this.trivia.question)
+    if (this.trivia) {
+      if (this.trivia?.isLink)
+        this.customFontName = await loadFontFromUrl(this.trivia.question)
+      else
+        this.customFontName = await loadFontFromFirebase(this.trivia.question)
+    }
+
   }
 
   onStateChange(state: GameState): void {

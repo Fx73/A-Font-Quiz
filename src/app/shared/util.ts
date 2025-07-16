@@ -1,3 +1,5 @@
+import { StorageService } from "../services/firestore/storage.service";
+
 export function generateAlphaNumCode(length: number): string {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let code = '';
@@ -46,4 +48,23 @@ export async function loadFontFromUrl(cssUrl: string): Promise<string> {
     })[0];
   }
 
+}
+
+export async function loadFontFromFirebase(name: string): Promise<string> {
+  const encodedName = encodeURIComponent(name);
+  const fontUrl = StorageService.BASE_STORAGE_URL + encodedName + '?alt=media';
+
+  const fontFamily = name.replace(/\.[^.]+$/, ''); // Remove extension
+
+  const style = document.createElement('style');
+  style.id = 'dynamic-font-style';
+  style.innerText = `
+    @font-face {
+      font-family: '${fontFamily}';
+      src: url('${fontUrl}');
+    }
+  `;
+  document.head.appendChild(style);
+
+  return fontFamily;
 }

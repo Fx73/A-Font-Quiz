@@ -9,13 +9,11 @@ import { getDownloadURL } from 'firebase/storage';
     providedIn: 'root'
 })
 export class StorageService {
-    readonly BASE_STORAGE_URL = 'https://firebasestorage.googleapis.com/v0/b/quiz-fonts-app.appspot.com/o/';
+    public static readonly BASE_STORAGE_URL = 'https://firebasestorage.googleapis.com/v0/b/afontquiz.firebasestorage.app/o/';
 
     private storage = getStorage();
 
-    constructor(private itemService: ItemFirestoreService) {
-
-    }
+    constructor(private itemService: ItemFirestoreService) { }
 
     async uploadFont(file: File): Promise<boolean> {
         const fileRef = ref(this.storage, file.name);
