@@ -12,14 +12,13 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
-
-    - name: Setup Node
-      uses: actions/setup-node@v4
+      
+    - run: npm install
+    - run: ng build  
+    - uses: FirebaseExtended/action-hosting-deploy@v0
       with:
-        node-version: 18
-
-    - name: Install Firebase CLI
-      run: npm install -g firebase-tools
-
-    - name: Deploy to Firebase
-      run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: live
+          projectId: afontquiz
+          entryPoint: website
