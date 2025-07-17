@@ -14,7 +14,6 @@ import { LobbyService } from 'src/app/services/firestore/lobby.service';
 import { PlayersCardComponent } from 'src/app/shared/component/players-card/players-card.component';
 import { Subscription } from 'rxjs';
 import { SystemMessageProvider } from 'src/app/shared/system-message-provider';
-import { TriviaItemDTO } from 'src/app/shared/DTO/trivia-item.dto';
 import { UserConfigService } from 'src/app/services/userconfig.service';
 import { WordBaseService } from './../../services/wordbase.service';
 import { addIcons } from 'ionicons';
@@ -148,10 +147,6 @@ export class LobbyPage implements OnInit, OnDestroy {
     setTimeout(async () => {
       await this.lobbyService.updateLobby(this.lobbyCode, 'state', GameState.GameQuestion);
     }, 2000);
-  }
-
-  private getWordForQuestion(question: TriviaItemDTO) {
-
   }
 
   copyToClipboard() {

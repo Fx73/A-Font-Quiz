@@ -47,7 +47,7 @@
 						<ion-card-title>Login</ion-card-title>
 						<ion-card-subtitle *ngIf="!isSmall">Already have an account ?</ion-card-subtitle>
 					</ion-card-header>
-					<!--ion-card-content>
+					<ion-card-content>
 						<form [formGroup]="loginForm"
 							(ngSubmit)="loginForm.valid && login(loginForm.controls['email'].value, loginForm.controls['password'].value)"
 							novalidate>
@@ -72,7 +72,7 @@
 								Login
 							</ion-button>
 						</form>
-					</ion-card-content-->
+					</ion-card-content>
 				</ion-card>
 			</ion-tab>
 
@@ -82,7 +82,7 @@
 						<ion-card-title>Register</ion-card-title>
 						<ion-card-subtitle *ngIf="!isSmall">Don't have an account ?</ion-card-subtitle>
 					</ion-card-header>
-					<!--ion-card-content>
+					<ion-card-content>
 						<form [formGroup]="registerForm"
 							(ngSubmit)="register(registerForm.controls['email'].value, registerForm.controls['password'].value)">
 							<ion-item>
@@ -106,7 +106,7 @@
 								Register
 							</ion-button>
 						</form>
-					</ion-card-content-->
+					</ion-card-content>
 				</ion-card>
 			</ion-tab>
 
@@ -117,7 +117,7 @@
 						<ion-card-title>Reset password with e-mail</ion-card-title>
 						<ion-card-subtitle *ngIf="!isSmall">Forgot your password ?</ion-card-subtitle>
 					</ion-card-header>
-					<!--ion-card-content>
+					<ion-card-content>
 						<form [formGroup]="passwordRecoveryForm"
 							(ngSubmit)="passwordRecovery(passwordRecoveryForm.controls['email'].value)">
 							<ion-item>
@@ -132,7 +132,7 @@
 								Reset my password
 							</ion-button>
 						</form>
-					</ion-card-content-->
+					</ion-card-content>
 				</ion-card>
 			</ion-tab>
 		</ion-tabs>

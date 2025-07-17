@@ -17,11 +17,9 @@ import { UserFirestoreService } from './../../services/firestore/user.firestore.
   templateUrl: './browse.page.html',
   styleUrls: ['./browse.page.scss'],
   standalone: true,
-  imports: [IonList, IonToggle, IonLabel, IonItem, IonTextarea, IonButton, IonSplitPane, IonCardSubtitle, IonMenu, IonCardContent, IonCardTitle, IonInfiniteScrollContent, IonInfiniteScroll, IonSearchbar, IonSelect, IonSelectOption, IonCard, IonCardHeader, IonInput, IonContent, CommonModule, FormsModule, HeaderComponent]
+  imports: [IonToggle, IonLabel, IonItem, IonTextarea, IonButton, IonSplitPane, IonCardSubtitle, IonMenu, IonCardContent, IonCardTitle, IonInfiniteScrollContent, IonInfiniteScroll, IonSearchbar, IonSelect, IonSelectOption, IonCard, IonCardHeader, IonInput, IonContent, CommonModule, FormsModule, HeaderComponent]
 })
 export class BrowsePage implements OnInit {
-  customFontName = 'CUSTOM_FONT_TESTER';
-
   searchQuery: string = '';
   items: TriviaItemDTO[] = [];
 
@@ -34,6 +32,8 @@ export class BrowsePage implements OnInit {
   selectedSubcategoryChoice: string | null = null;
 
   userId: string | undefined
+
+  customFontName = 'CUSTOM_FONT_NAME';
 
   constructor(private itemFirestoreService: ItemFirestoreService, private userFirestoreService: UserFirestoreService, private storageService: StorageService, private userConfigService: UserConfigService) {
     this.userId = userFirestoreService.getUserData()?.id
@@ -143,7 +143,7 @@ export class BrowsePage implements OnInit {
       this.resetSelectedItem()
       return;
     }
-    console.log(item)
+
     this.selectedItem = item;
     this.selectedCategoryChoice = item.category ?? null
     if (this.selectedCategoryChoice) {
@@ -154,7 +154,7 @@ export class BrowsePage implements OnInit {
       this.customFontName = await loadFontFromUrl(this.selectedItem!.question)
     else
       this.customFontName = await loadFontFromFirebase(this.selectedItem!.question)
-    console.log(this.customFontName)
+
   }
 
 
