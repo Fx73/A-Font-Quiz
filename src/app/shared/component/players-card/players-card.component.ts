@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IonBadge, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIcon, IonItem, IonList } from "@ionic/angular/standalone";
 import { checkmarkCircle, closeCircle, removeOutline, star } from 'ionicons/icons';
 
@@ -10,7 +10,7 @@ import { addIcons } from 'ionicons';
   templateUrl: './players-card.component.html',
   styleUrls: ['./players-card.component.scss'],
   standalone: true,
-  imports: [IonCardTitle, IonCardHeader, IonButton, IonBadge, IonIcon, IonItem, IonCardContent, IonList, IonCard,],
+  imports: [IonIcon, IonCardTitle, IonButton, IonCardHeader, IonBadge, IonCard, IonItem, IonCardContent, IonList,],
 })
 
 export class PlayersCardComponent {

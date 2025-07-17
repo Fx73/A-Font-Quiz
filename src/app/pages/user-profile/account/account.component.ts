@@ -9,7 +9,7 @@ import { LoginFireauthService } from 'src/app/services/firestore/login.fireauth.
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
   standalone: true,
-  imports: [FormsModule, IonButton, IonItem, IonCard],
+  imports: [IonItem, IonCard, IonButton, FormsModule],
 })
 export class AccountComponent {
 

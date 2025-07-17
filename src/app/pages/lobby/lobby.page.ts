@@ -1,6 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, OnDestroy, OnInit } from '@angular/core';
-import { GameState, Lobby } from '../../shared/DTO/lobby';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonGrid, IonIcon, IonInput, IonItem, IonLabel, IonRange, IonRow, IonSelect, IonSelectOption, IonToggle } from "@ionic/angular/standalone";
 import { clipboard, helpCircleOutline } from 'ionicons/icons';
 
@@ -8,6 +7,7 @@ import { AppComponent } from 'src/app/app.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GameInstance } from './../../services/game.instance';
+import { GameState } from '../../shared/DTO/lobby';
 import { HeaderComponent } from 'src/app/shared/component/header/header.component';
 import { ItemFirestoreService } from 'src/app/services/firestore/item.firestore.service';
 import { LobbyService } from 'src/app/services/firestore/lobby.service';
@@ -23,7 +23,7 @@ import { addIcons } from 'ionicons';
   templateUrl: './lobby.page.html',
   styleUrls: ['./lobby.page.scss'],
   standalone: true,
-  imports: [IonSelect, IonRange, IonToggle, IonCardContent, IonItem, IonInput, IonCardHeader, IonContent, IonGrid, IonRow, IonCol, IonIcon, IonCard, IonCardTitle, IonButton, CommonModule, FormsModule, HeaderComponent, PlayersCardComponent, IonSelectOption, IonLabel]
+  imports: [IonLabel, IonSelect, IonRange, IonCardContent, IonRow, IonContent, IonGrid, IonButton, IonIcon, IonCardTitle, IonCardHeader, IonCard, IonCol, IonInput, IonToggle, IonItem, CommonModule, FormsModule, HeaderComponent, PlayersCardComponent, IonSelectOption],
 })
 export class LobbyPage implements OnInit, OnDestroy {
   get gameInstance(): GameInstance { return AppComponent.gameInstance }
@@ -32,7 +32,6 @@ export class LobbyPage implements OnInit, OnDestroy {
   lobbyCode: string;
 
   categoryList: string[] = []
-  subcategoryList: string[] = []
 
   questionCount: number = 10;
 
@@ -98,19 +97,6 @@ export class LobbyPage implements OnInit, OnDestroy {
     this.lobbyService.changePlayerName(this.lobbyCode, this.gameInstance.playerName)
   }
 
-
-  async onCategorySelect(value: string | null) {
-    await this.lobbyService.updateLobby(this.lobbyCode, 'category', value)
-    if (value)
-      this.subcategoryList = await this.itemService.getSubcategories(value)
-  }
-  async onSubcategorySelect(value: string | null) {
-    await this.lobbyService.updateLobby(this.lobbyCode, 'subcategory', value)
-  }
-  async onQuestionCountChange(value: any) {
-    await this.lobbyService.updateLobby(this.lobbyCode, 'questionCount', value)
-  }
-
   async onLobbyValueModified(key: string, value: any) {
     await this.lobbyService.updateLobby(this.lobbyCode, key, value)
   }
@@ -118,7 +104,7 @@ export class LobbyPage implements OnInit, OnDestroy {
   async onStartPressed() {
     if (!this.gameInstance.lobby) return
     this.isLobbyLocked = true;
-    const questions = await this.itemService.getRandomQuestionIds(this.gameInstance.lobby.questionCount, this.gameInstance.lobby.category, this.gameInstance.lobby.subcategory)
+    const questions = await this.itemService.getRandomQuestionIds(this.gameInstance.lobby.questionCount, this.gameInstance.lobby.category)
 
     if (questions.length < this.gameInstance.lobby.questionCount) {
       this.isLobbyLocked = false;

@@ -14,7 +14,7 @@ import { addIcons } from 'ionicons';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
   standalone: true,
-  imports: [IonIcon, IonButton, IonItem, IonLabel, IonContent, IonPopover, NgIf],
+  imports: [IonLabel, IonItem, IonContent, IonPopover, IonIcon, IonButton, NgIf],
 })
 export class UserComponent {
   @ViewChild('userpopover', { static: false }) userpopover!: HTMLIonPopoverElement;

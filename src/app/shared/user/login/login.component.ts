@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonInput, IonItem, IonLabel, IonTab, IonTabBar, IonTabButton, IonTabs, IonTitle } from "@ionic/angular/standalone";
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonInput, IonItem, IonLabel, IonTab, IonTabs, IonTitle } from "@ionic/angular/standalone";
 import { NgClass, NgIf } from '@angular/common';
 import { keyOutline, logInOutline, logoGoogle, personAddOutline, refreshCircleOutline } from 'ionicons/icons';
 
@@ -12,7 +12,7 @@ import { addIcons } from 'ionicons';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [IonButton, IonItem, FormsModule, IonCardSubtitle, ReactiveFormsModule, IonTabButton, IonTabBar, IonCardHeader, IonCardTitle, IonCardContent, IonTitle, IonCard, IonTab, IonIcon, IonTabs, NgIf, NgClass, IonLabel, IonInput],
+  imports: [IonInput, IonItem, IonLabel, IonTitle, IonCardSubtitle, IonTab, IonCard, IonButton, IonTabs, IonCardContent, IonCardTitle, IonIcon, IonCardHeader, CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgIf],
 })
 export class LoginComponent {
   @Input()
