@@ -27,13 +27,15 @@ Welcome to **Multiplayer Trive Template**, a web application that challenges use
 
 ## 📁 Run the app yourself
 
-Run locally
- -> npm install
- -> ionic serve
-
-Build & publish
-  -> npm install
-  -> npm run ionic-build-prod
-  -> cd website
-  -> firebase deploy
- 
+### Run locally
+```bash
+ npm install
+ ionic serve
+```
+### Build & publish
+```bash
+ npm install
+ npm run ionic-build-prod
+ cd website
+ firebase deploy
+```
