@@ -25,4 +25,15 @@ Welcome to **Multiplayer Trive Template**, a web application that challenges use
 | Firebase   | Game synch                        |
 | SCSS       | Styling                           |
 
-## 📁 Project Structure
+## 📁 Run the app yourself
+
+Run locally
+ -> npm install
+ -> ionic serve
+
+Build & publish
+  -> npm install
+  -> npm run ionic-build-prod
+  -> cd website
+  -> firebase deploy
+ 
