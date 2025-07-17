@@ -72,9 +72,14 @@
 							<p>You will do better, maybe!</p>
 						</ion-chip>
 						}
-
 					</div>
 				</ion-card-content>
+				<ion-card-header
+					*ngIf="gameInstance.lobby.allowPreview || gameInstance.lobby.state === GameState.GameAnswer">
+					<ion-card-title [ngStyle]="{ 'font-family': customFontName}" class="font-up">
+						{{gameInstance.lobby.state === GameState.GameAnswer ? trivia.answer : userAnswer}}
+					</ion-card-title>
+				</ion-card-header>
 			</ion-card>
 
 			<ion-card *ngIf="gameInstance.lobby.state === GameState.InVictoryRoom" class="end-screen-card">

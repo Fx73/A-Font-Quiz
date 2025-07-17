@@ -4,6 +4,7 @@ import { AppComponent } from 'src/app/app.component';
 import { Injectable } from '@angular/core';
 import { ItemFirestoreService } from './item.firestore.service';
 import { getDownloadURL } from 'firebase/storage';
+import { sanitizeFileName } from 'src/app/shared/util';
 
 @Injectable({
     providedIn: 'root'
@@ -15,16 +16,17 @@ export class StorageService {
 
     constructor(private itemService: ItemFirestoreService) { }
 
-    async uploadFont(file: File): Promise<boolean> {
-        const fileRef = ref(this.storage, file.name);
+    async uploadFont(file: File): Promise<string | null> {
+        const fileName = sanitizeFileName(file.name)
+        const fileRef = ref(this.storage, fileName);
         try {
             const existingURL = await getDownloadURL(fileRef);
             AppComponent.presentOkToast('File already exists. Using existing version.');
-            return true;
+            return fileName;
         } catch (error: any) {
             if (error.code !== 'storage/object-not-found') {
                 AppComponent.presentErrorToast('Database error: ' + error.message);
-                return false;
+                return null;
             }
         }
 
@@ -40,11 +42,11 @@ export class StorageService {
                 () => { },
                 err => {
                     AppComponent.presentErrorToast('Upload error: ' + err.message);
-                    resolve(false);
+                    resolve(null);
                 },
                 async () => {
                     AppComponent.presentOkToast('Font uploaded successfully!');
-                    resolve(true);
+                    resolve(fileName);
                 }
             );
         });

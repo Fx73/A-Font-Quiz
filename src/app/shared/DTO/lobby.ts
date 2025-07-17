@@ -13,6 +13,7 @@ export class Lobby {
     questionList: string[] = []
     questionStartAt?: Timestamp;
     systemMessage?: string;
+    allowPreview: boolean = true;
 
     wordList: string[] = []
     constructor() {

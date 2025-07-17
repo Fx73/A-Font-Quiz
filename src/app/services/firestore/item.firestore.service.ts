@@ -42,6 +42,7 @@ export class ItemFirestoreService {
                     this.addSubcategory(dto.category, dto.subcategory);
             }
         } catch (error) {
+            dto.owner = undefined
             AppComponent.presentWarningToast("Error uploading music: " + error)
             throw error;
         }

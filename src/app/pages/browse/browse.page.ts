@@ -122,7 +122,7 @@ export class BrowsePage implements OnInit {
     if (newCategory && !this.categoryList.includes(newCategory))
       this.categoryList.push(newCategory);
 
-    this.selectedItem = null;
+    this.resetSelectedItem()
   }
 
   onSaveItem() {
@@ -135,14 +135,15 @@ export class BrowsePage implements OnInit {
     await this.itemFirestoreService.deleteItem(this.selectedItem.id)
 
     this.items = this.items.filter(item => item.id !== this.selectedItem?.id);
-    this.selectedItem = null;
+    this.resetSelectedItem()
   }
 
   async select(item: TriviaItemDTO) {
     if (this.selectedItem?.id === item.id) {
-      this.selectedItem = null;
+      this.resetSelectedItem()
       return;
     }
+    console.log(item)
     this.selectedItem = item;
     this.selectedCategoryChoice = item.category ?? null
     if (this.selectedCategoryChoice) {
@@ -153,6 +154,7 @@ export class BrowsePage implements OnInit {
       this.customFontName = await loadFontFromUrl(this.selectedItem!.question)
     else
       this.customFontName = await loadFontFromFirebase(this.selectedItem!.question)
+    console.log(this.customFontName)
   }
 
 
@@ -174,11 +176,12 @@ export class BrowsePage implements OnInit {
       const file = input.files?.[0];
       if (file) {
         try {
-          const success = await this.storageService.uploadFont(file);
-          if (success) {
-            this.selectedItem!.question = file.name
+          const name = await this.storageService.uploadFont(file);
+          if (name) {
+            this.selectedItem!.question = name
             this.selectedItem!.isLink = false;
             AppComponent.presentOkToast('Font uploaded successfully!');
+            this.customFontName = await loadFontFromFirebase(this.selectedItem!.question)
           }
         } catch (err) {
           AppComponent.presentErrorToast('Upload failed');
@@ -199,5 +202,11 @@ export class BrowsePage implements OnInit {
     }
   }
 
+  private resetSelectedItem() {
+    this.selectedItem = null
+    this.selectedCategoryChoice = null
+    this.selectedSubcategoryChoice = null
+    this.subcategoryList = []
+  }
 
 }

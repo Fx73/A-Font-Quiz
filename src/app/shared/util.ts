@@ -53,8 +53,9 @@ export async function loadFontFromUrl(cssUrl: string): Promise<string> {
 export async function loadFontFromFirebase(name: string): Promise<string> {
   const encodedName = encodeURIComponent(name);
   const fontUrl = StorageService.BASE_STORAGE_URL + encodedName + '?alt=media';
-
-  const fontFamily = name.replace(/\.[^.]+$/, ''); // Remove extension
+  console.log(fontUrl)
+  const fontFamily = "CUSTOM_FONT_TESTER"; // Remove extension
+  console.log(fontFamily)
 
   const style = document.createElement('style');
   style.id = 'dynamic-font-style';
@@ -67,4 +68,14 @@ export async function loadFontFromFirebase(name: string): Promise<string> {
   document.head.appendChild(style);
 
   return fontFamily;
+}
+
+
+export function sanitizeFileName(fileName: string): string {
+  const lastDotIndex = fileName.lastIndexOf('.');
+  if (lastDotIndex === -1) return fileName.replace(/\./g, '');
+
+  const name = fileName.substring(0, lastDotIndex).replace(/\./g, '');
+  const ext = fileName.substring(lastDotIndex + 1);
+  return `${name}.${ext}`;
 }
