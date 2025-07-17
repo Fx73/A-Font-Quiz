@@ -32,23 +32,6 @@
           </ion-item>
 
 
-
-          <ion-item *ngIf="selectedCategoryChoice" [disabled]="selectedItem.owner && selectedItem.owner !== userId">
-            <ion-label position="stacked">Subcategory</ion-label>
-            <ion-select [(ngModel)]="selectedSubcategoryChoice" (ionChange)="onSubcategorySelect()" interface="popover"
-              placeholder="Choose or create">
-              <ion-select-option [value]="null">No subcategory</ion-select-option>
-              <ion-select-option [value]="'__custom__'">Create new subcategory</ion-select-option>
-              <ion-select-option *ngFor="let sub of subcategoryList" [value]="sub">
-                {{ sub }}
-              </ion-select-option>
-            </ion-select>
-          </ion-item>
-
-          <ion-item *ngIf="selectedSubcategoryChoice === '__custom__'"
-            [disabled]="selectedItem.owner && selectedItem.owner !== userId">
-            <ion-input [(ngModel)]="selectedItem.subcategory" placeholder="Enter new subcategory"></ion-input>
-          </ion-item>
           <ion-item [disabled]="selectedItem.owner && selectedItem.owner !== userId">
             <ion-toggle [checked]="selectedItem.isLink" (ionChange)="onLinkToggle($event.target.checked)"
               [disabled]="!selectedItem.isLink && selectedItem.question"> Upload

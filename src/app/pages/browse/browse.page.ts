@@ -80,6 +80,7 @@ export class BrowsePage implements OnInit {
     } else {
       this.showNewCategory = false
     }
+  }
 
   onLinkToggle(checked: boolean) {
     if (!this.selectedItem) return
@@ -93,9 +94,7 @@ export class BrowsePage implements OnInit {
     }
   }
 
-  onAddNewItem() {
-    this.selectedItem = new TriviaItemDTO();
-  }
+
   async onCategoryAdd() {
     if (!this.selectedItem) return
     const valid = await this.itemFirestoreService.addCategory(this.selectedItem?.category)
@@ -121,7 +120,7 @@ export class BrowsePage implements OnInit {
     if (newCategory && !this.categoryList.includes(newCategory))
       this.categoryList.push(newCategory);
 
-    this.resetSelectedItem()
+    this.selectedItem = null
   }
 
   onSaveItem() {
@@ -134,21 +133,17 @@ export class BrowsePage implements OnInit {
     await this.itemFirestoreService.deleteItem(this.selectedItem.id)
 
     this.items = this.items.filter(item => item.id !== this.selectedItem?.id);
-    this.resetSelectedItem()
+    this.selectedItem = null
   }
 
   async select(item: TriviaItemDTO) {
     if (this.selectedItem?.id === item.id) {
-      this.resetSelectedItem()
+      this.selectedItem = null
       return;
     }
 
     this.selectedItem = item;
-    this.selectedCategoryChoice = item.category ?? null
-    if (this.selectedCategoryChoice) {
-      this.itemFirestoreService.getSubcategories(this.selectedCategoryChoice).then(value => this.subcategoryList = value)
-      this.selectedSubcategoryChoice = item.subcategory ?? null
-    }
+
     if (item.isLink)
       this.customFontName = await loadFontFromUrl(this.selectedItem!.question)
     else
@@ -199,13 +194,6 @@ export class BrowsePage implements OnInit {
       this.selectedItem.isLink = true;
       AppComponent.presentWarningToast('Font reference removed.');
     }
-  }
-
-  private resetSelectedItem() {
-    this.selectedItem = null
-    this.selectedCategoryChoice = null
-    this.selectedSubcategoryChoice = null
-    this.subcategoryList = []
   }
 
 }
