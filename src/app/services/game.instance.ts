@@ -4,6 +4,7 @@ import { GameState, Lobby } from "../shared/DTO/lobby"
 import { AppComponent } from "../app.component"
 import { LobbyService } from "./firestore/lobby.service"
 import { Player } from "../shared/DTO/player"
+import { environment } from "src/environments/environment"
 
 export class GameInstance {
 
@@ -43,7 +44,8 @@ export class GameInstance {
     }
 
     onChangeInLobby(newLobby: Lobby) {
-        console.log('Lobby received :', newLobby);
+        if (!environment.production)
+            console.log('Lobby received :', newLobby);
 
         const previousState = this.lobby?.state;
         const previousMessage = this.lobby?.systemMessage;
@@ -61,7 +63,8 @@ export class GameInstance {
 
 
     onChangeInPlayers(newPlayers: Player[]) {
-        console.log('Player received :', newPlayers);
+        if (!environment.production)
+            console.log('Player received :', newPlayers);
 
         const currentReadyCount = this.players.filter(p => p.isReady).length;
         const newReadyCount = newPlayers.filter(p => p.isReady).length;

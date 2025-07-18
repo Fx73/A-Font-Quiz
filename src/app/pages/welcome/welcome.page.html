@@ -4,8 +4,11 @@
 		<ion-card class="base-card block-welcome">
 			<ion-card-header>
 				<ion-card-title class="home-fontsize">
-					Welcome on MultiPlayer Trivia Template
+					Welcome on a Font Quiz !
 				</ion-card-title>
+				<ion-card-subtitle> <b>🕹️Can you recognize the fonts behind legendary movie posters, book covers, or
+						video-game jackets ?</b> </ion-card-subtitle>
+				<ion-card-subtitle>Play a game with friends to find out!</ion-card-subtitle>
 			</ion-card-header>
 			<ion-card-content>
 				<ion-card class="card-container">
@@ -29,7 +32,9 @@
 		<ion-card class="base-card block-user">
 			<ion-card-header>
 				<ion-card-title>{{ userData?.name ?? "Anonymous user" }} </ion-card-title>
-				<ion-card-subtitle *ngIf="!userData"> Log in to upload your questions</ion-card-subtitle>
+				<ion-card-subtitle>🎨 Want to level up the game? Add your own font-based challenges and let others guess
+					your iconic picks!</ion-card-subtitle>
+				<ion-card-subtitle *ngIf="!userData"> <i>Log in to upload your questions</i></ion-card-subtitle>
 			</ion-card-header>
 			<ion-card-content>
 				<ion-button [routerLink]="['/browse']" [disabled]="!userData" expand="block" class="home-content">
@@ -39,9 +44,9 @@
 					class="home-content">
 					My Profile
 				</ion-button>
-				<ion-button [routerLink]="['/options']" expand="block" size="small" class="home-content" color="dark">
+				<!--ion-button [routerLink]="['/options']" expand="block" size="small" class="home-content" color="dark">
 					Options
-				</ion-button>
+				</ion-button-->
 				<ion-button [routerLink]="['/about']" expand="block" size="small" class="home-content" color="dark">
 					Help
 				</ion-button>
