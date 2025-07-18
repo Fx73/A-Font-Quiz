@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { Player } from '../../shared/DTO/player';
 import { SystemMessageProvider } from 'src/app/shared/system-message-provider';
 import { UserConfigService } from 'src/app/services/userconfig.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -163,7 +164,8 @@ export class LobbyService {
 
 
   async updateLobby(lobbyCode: string, key: string, value: any): Promise<void> {
-    console.log("Updating Lobby ", lobbyCode, key, value)
+    if (!environment.production)
+      console.log("Updating Lobby ", lobbyCode, key, value)
     const lobbyRef = doc(this.db, this.LOBBY_COLLECTION, lobbyCode);
     const snap = await getDoc(lobbyRef);
 

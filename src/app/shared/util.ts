@@ -51,12 +51,9 @@ export async function loadFontFromUrl(cssUrl: string): Promise<string> {
 }
 
 export async function loadFontFromFirebase(name: string): Promise<string> {
-  console.log("trying to load", name)
   const encodedName = encodeURIComponent(name);
   const fontUrl = StorageService.BASE_STORAGE_URL + encodedName + '?alt=media';
-  console.log(fontUrl)
   const fontFamily = "CUSTOM_FONT_TESTER"; // Remove extension
-  console.log(fontFamily)
 
   const style = document.createElement('style');
   style.id = 'dynamic-font-style';
