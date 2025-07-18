@@ -53,7 +53,6 @@ Diablo II
 Super Smash Bros. Melee
 Pac-Man
 Journey
-Ico
 Space Invaders
 Grand Theft Auto: Vice City
 Overwatch
@@ -217,7 +216,6 @@ Ultima IV: Quest of the Avatar
 Rayman Legends
 Paper Mario: The Thousand-Year Door
 Gran Turismo 3: A-Spec
-Rez
 FTL: Faster Than Light
 Monkey Island 2: LeChuck's Revenge
 Company of Heroes
@@ -251,7 +249,6 @@ Borderlands 2
 Suikoden II
 Silent Hill
 Gauntlet
-Fez
 Demon's Souls
 Battlefield 2
 Resident Evil 2

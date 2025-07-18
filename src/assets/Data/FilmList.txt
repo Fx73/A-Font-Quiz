@@ -135,7 +135,6 @@ X-Men: Days of Future Past
 The Chronicles of Narnia: The Lion, the Witch and the Wardrobe
 Monsters University
 The Matrix Reloaded
-Up
 F9: The Fast Saga
 Ne Zha
 Gravity
@@ -150,7 +149,6 @@ Dawn of the Planet of the Apes
 Transformers
 Mamma Mia!
 Fast X
-It
 The Wandering Earth
 The Twilight Saga: Eclipse
 The Hunger Games
@@ -221,7 +219,6 @@ The Mermaid
 Armageddon
 The Day After Tomorrow
 Star Wars: Episode V - The Empire Strikes Back
-Ted
 Kung Fu Panda 4
 American Sniper
 Mission: Impossible II
@@ -273,7 +270,6 @@ Angels & Demons
 Demon Slayer: Kimetsu no Yaiba - The Movie: Mugen Train
 Teenage Mutant Ninja Turtles
 Bruce Almighty
-Rio
 Star Wars: Episode VI - Return of the Jedi
 Saving Private Ryan
 Rise of the Planet of the Apes
@@ -305,7 +301,6 @@ X-Men: The Last Stand
 Moon Man
 National Treasure: Book of Secrets
 Mission: Impossible
-300
 The Last Samurai
 Beetlejuice Beetlejuice
 Beauty and the Beast
@@ -613,13 +608,11 @@ Soap
 Rome
 Boardwalk Empire
 The Real World
-Oz
 Rick and Morty
 Alias
 Downton Abbey
 The Americans
 Hannibal
-ER
 I, Claudius
 The Wonder Years
 Survivor
@@ -639,7 +632,6 @@ The Office (US)
 It's Always Sunny in Philadelphia
 Roseanne
 Cowboy Bebop
-24
 Louie
 Freaks and Geeks
 Alfred Hitchcock Presents

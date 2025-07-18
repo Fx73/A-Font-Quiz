@@ -51,6 +51,7 @@ export async function loadFontFromUrl(cssUrl: string): Promise<string> {
 }
 
 export async function loadFontFromFirebase(name: string): Promise<string> {
+  console.log("trying to load", name)
   const encodedName = encodeURIComponent(name);
   const fontUrl = StorageService.BASE_STORAGE_URL + encodedName + '?alt=media';
   console.log(fontUrl)

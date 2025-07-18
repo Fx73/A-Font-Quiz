@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InfiniteScrollCustomEvent, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonIcon, IonInfiniteScroll, IonInfiniteScrollContent, IonInput, IonItem, IonLabel, IonMenu, IonSearchbar, IonSelect, IonSelectOption, IonSplitPane, IonTextarea, MenuController } from '@ionic/angular/standalone';
+import { InfiniteScrollCustomEvent, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonIcon, IonInfiniteScroll, IonInfiniteScrollContent, IonInput, IonItem, IonLabel, IonMenu, IonSearchbar, IonSelect, IonSelectOption, IonSplitPane, IonTextarea, IonToggle, MenuController } from '@ionic/angular/standalone';
 import { loadFontFromFirebase, loadFontFromUrl } from 'src/app/shared/util';
 
 import { AppComponent } from 'src/app/app.component';
@@ -18,7 +18,7 @@ import { addIcons } from 'ionicons';
   templateUrl: './browse.page.html',
   styleUrls: ['./browse.page.scss'],
   standalone: true,
-  imports: [IonIcon, IonLabel, IonItem, IonTextarea, IonButton, IonSplitPane, IonCardSubtitle, IonMenu, IonCardContent, IonCardTitle, IonInfiniteScrollContent, IonInfiniteScroll, IonSearchbar, IonSelect, IonSelectOption, IonCard, IonCardHeader, IonInput, IonContent, CommonModule, FormsModule, HeaderComponent]
+  imports: [IonToggle, IonIcon, IonLabel, IonItem, IonTextarea, IonButton, IonSplitPane, IonCardSubtitle, IonMenu, IonCardContent, IonCardTitle, IonInfiniteScrollContent, IonInfiniteScroll, IonSearchbar, IonSelect, IonSelectOption, IonCard, IonCardHeader, IonInput, IonContent, CommonModule, FormsModule, HeaderComponent]
 })
 export class BrowsePage implements OnInit {
   searchQuery: string = ''
@@ -35,7 +35,7 @@ export class BrowsePage implements OnInit {
 
   customFontName = 'CUSTOM_FONT_NAME';
 
-  constructor(private itemFirestoreService: ItemFirestoreService, private userFirestoreService: UserFirestoreService, private storageService: StorageService, private userConfigService: UserConfigService, private menu: MenuController) {
+  constructor(private itemFirestoreService: ItemFirestoreService, private userFirestoreService: UserFirestoreService, private storageService: StorageService, private menu: MenuController) {
     addIcons({ addCircleOutline });
     this.userId = userFirestoreService.getUserData()?.id
   }
@@ -80,6 +80,13 @@ export class BrowsePage implements OnInit {
       return;
     }
     this.selectedItem = item;
+
+    if (item.isLink)
+      loadFontFromUrl(this.selectedItem!.question).then(cfn => this.customFontName = cfn)
+    else
+      loadFontFromFirebase(this.selectedItem!.question).then(cfn => this.customFontName = cfn)
+
+
     this.openMenu()
   }
 
@@ -147,22 +154,6 @@ export class BrowsePage implements OnInit {
     this.items = this.items.filter(item => item.id !== this.selectedItem?.id);
     this.selectedItem = null
   }
-
-  async select(item: TriviaItemDTO) {
-    if (this.selectedItem?.id === item.id) {
-      this.selectedItem = null
-      return;
-    }
-
-    this.selectedItem = item;
-
-    if (item.isLink)
-      this.customFontName = await loadFontFromUrl(this.selectedItem!.question)
-    else
-      this.customFontName = await loadFontFromFirebase(this.selectedItem!.question)
-
-  }
-
 
   onSearch(event: any) {
     this.searchQuery = event.target.value.toLowerCase();
