@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InfiniteScrollCustomEvent, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonInfiniteScroll, IonInfiniteScrollContent, IonInput, IonItem, IonLabel, IonList, IonMenu, IonSearchbar, IonSelect, IonSelectOption, IonSplitPane, IonTextarea, IonToggle } from '@ionic/angular/standalone';
+import { InfiniteScrollCustomEvent, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonIcon, IonInfiniteScroll, IonInfiniteScrollContent, IonInput, IonItem, IonLabel, IonMenu, IonSearchbar, IonSelect, IonSelectOption, IonSplitPane, IonTextarea, MenuController } from '@ionic/angular/standalone';
 import { loadFontFromFirebase, loadFontFromUrl } from 'src/app/shared/util';
 
 import { AppComponent } from 'src/app/app.component';
@@ -9,15 +9,16 @@ import { HeaderComponent } from "src/app/shared/component/header/header.componen
 import { ItemFirestoreService } from 'src/app/services/firestore/item.firestore.service';
 import { StorageService } from './../../services/firestore/storage.service';
 import { TriviaItemDTO } from 'src/app/shared/DTO/trivia-item.dto';
-import { UserConfigService } from 'src/app/services/userconfig.service';
 import { UserFirestoreService } from './../../services/firestore/user.firestore.service';
+import { addCircleOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-browse',
   templateUrl: './browse.page.html',
   styleUrls: ['./browse.page.scss'],
   standalone: true,
-  imports: [IonToggle, IonLabel, IonItem, IonTextarea, IonButton, IonSplitPane, IonCardSubtitle, IonMenu, IonCardContent, IonCardTitle, IonInfiniteScrollContent, IonInfiniteScroll, IonSearchbar, IonSelect, IonSelectOption, IonCard, IonCardHeader, IonInput, IonContent, CommonModule, FormsModule, HeaderComponent]
+  imports: [IonIcon, IonLabel, IonItem, IonTextarea, IonButton, IonSplitPane, IonCardSubtitle, IonMenu, IonCardContent, IonCardTitle, IonInfiniteScrollContent, IonInfiniteScroll, IonSearchbar, IonSelect, IonSelectOption, IonCard, IonCardHeader, IonInput, IonContent, CommonModule, FormsModule, HeaderComponent]
 })
 export class BrowsePage implements OnInit {
   searchQuery: string = ''
@@ -34,7 +35,8 @@ export class BrowsePage implements OnInit {
 
   customFontName = 'CUSTOM_FONT_NAME';
 
-  constructor(private itemFirestoreService: ItemFirestoreService, private userFirestoreService: UserFirestoreService, private storageService: StorageService, private userConfigService: UserConfigService) {
+  constructor(private itemFirestoreService: ItemFirestoreService, private userFirestoreService: UserFirestoreService, private storageService: StorageService, private userConfigService: UserConfigService, private menu: MenuController) {
+    addIcons({ addCircleOutline });
     this.userId = userFirestoreService.getUserData()?.id
   }
 
@@ -69,6 +71,16 @@ export class BrowsePage implements OnInit {
 
   onAddNewItem() {
     this.selectedItem = new TriviaItemDTO();
+    this.openMenu()
+  }
+
+  onSelectItem(item: TriviaItemDTO) {
+    if (this.selectedItem?.id === item.id) {
+      this.selectedItem = null;
+      return;
+    }
+    this.selectedItem = item;
+    this.openMenu()
   }
 
   onCategorySelect() {
@@ -183,6 +195,7 @@ export class BrowsePage implements OnInit {
       }
     };
 
+
     input.click();
   }
 
@@ -196,4 +209,8 @@ export class BrowsePage implements OnInit {
     }
   }
 
+  openMenu() {
+    this.menu.enable(true)
+    this.menu.open();
+  }
 }
